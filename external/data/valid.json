@@ -1,0 +1,12 @@
+{
+  "ReferenceToLocalSchema": {
+    "no-write": true
+  },
+  "ReferenceToExternalSchema": {
+    "src": [
+      "hello",
+      "world",
+      "!!!"
+    ]
+  }
+}

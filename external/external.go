@@ -5,10 +5,15 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
+type dataValidator struct {
+	data string
+	err  error
+}
+
 func main() {
 
 	schemaLoader := gojsonschema.NewReferenceLoader("file://schema/Main.json")
-	documentLoader := gojsonschema.NewReferenceLoader("file://data/empty.json")
+	documentLoader := gojsonschema.NewReferenceLoader("file://data/valid.json")
 
 	result, err := gojsonschema.Validate(schemaLoader, documentLoader)
 	if err != nil {
