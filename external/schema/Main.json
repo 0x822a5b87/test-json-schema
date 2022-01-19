@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "ReferenceToLocalSchema": {
+      "$ref": "#/definitions/LocalType"
+    },
+    "ReferenceToExternalSchema": {
+      "$ref": "Common.json#/definitions/ExternalType"
+    }
+  },
+  "definitions": {
+    "LocalType": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "no-write": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  }
+}
