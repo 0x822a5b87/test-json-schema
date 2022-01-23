@@ -1,0 +1,55 @@
+kind: flink
+apiVersion: v1
+metadata:
+  name: flink-kafka-write2-es-xxx
+  namespace: default
+  labels:
+    location: sh
+    authority: db_write
+spec:
+  config:
+    enableCheckpoint: true
+  deploy:
+    type: jar
+    jar:
+      name: FlinkStream.jar
+      class: com.tencent.stream.KafkaWrite2RedisJob
+  sources:
+    - type: kafka
+      kafka:
+        id: 202
+        topic: ieg_smoba_playerlogin
+        zookeeper: 127.0.0.1:2181
+        broker: 127.0.0.1:9092
+        config:
+          security.protocol: org.apache.kafka.common.security.scram.ScramLoginModule
+          sasl.mechanism: sasl-username
+          sasl.jaas.password: sasl-password
+    - type: kafka
+      kafka:
+        id: 203
+        topic: ieg_smoba_playerlogin
+    - type: kafka
+      kafka:
+        id: 204
+        topic: ieg_smoba_playerlogin
+    - type: kafka
+      kafka:
+        id: 205
+        topic: ieg_smoba_playerlogin
+  sink:
+    type: redis
+    redis:
+      host: "tencent-redis"
+      port: 6379
+      db: "smoba"
+      auth: "xxx"
+      pattern:
+        prefixs:
+          - "hello"
+          - "world"
+  monitor:
+    - type: tglog
+      host: tglog.sh
+      port: 33088
+  probe:
