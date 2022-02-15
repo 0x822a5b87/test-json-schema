@@ -2,7 +2,7 @@ package v1
 
 type StreamSource struct {
 	Type       StreamSourceTypeEnum `yaml:"type" validate:"required"`
-	KafkaSpec  KafkaSpec            `yaml:"kafka" validate:"required"`
+	KafkaSpec  KafkaSpec            `yaml:"kafka" validate:"required,unique"`
 	PulsarSpec PulsarSpec           `yaml:"pulsar"`
 }
 
@@ -12,7 +12,7 @@ type KafkaSpec struct {
 	Topic     string            `yaml:"topic" validate:"required"`
 	Zookeeper string            `yaml:"zookeeper" validate:"required"`
 	Broker    string            `yaml:"broker" validate:"required"`
-	Config    map[string]string `yaml:"config"`
+	Config    map[string]string `yaml:"config" validate:"required"`
 }
 
 type PulsarSpec struct {

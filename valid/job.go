@@ -17,7 +17,7 @@ type FlinkJob struct {
 }
 
 type StormSpec struct {
-	Sources []v1.StreamSource `yaml:"sources" validate:"required"`
+	Sources []v1.StreamSource `yaml:"sources" validate:"required,dive"`
 	Sink    v1.Sink           `yaml:"sink" validate:"required"`
 
 	// Probes are not allowed for ephemeral containers.
@@ -31,7 +31,7 @@ type StormSpec struct {
 type FlinkSpec struct {
 	v1.Deploy `yaml:"deploy" validate:"required"`
 
-	Sources []v1.StreamSource `yaml:"sources" validate:"required"`
+	Sources []v1.StreamSource `yaml:"sources" validate:"required,dive"`
 	Sink    v1.Sink           `yaml:"sink" validate:"required"`
 
 	Config FlinkJobConfig `yaml:"config"`
