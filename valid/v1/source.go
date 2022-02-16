@@ -12,7 +12,7 @@ type KafkaSpec struct {
 	Topic     string            `yaml:"topic" validate:"required"`
 	Zookeeper string            `yaml:"zookeeper" validate:"required"`
 	Broker    string            `yaml:"broker" validate:"required"`
-	Config    map[string]string `yaml:"config" validate:"required"`
+	Config    map[string]string `yaml:"config"`
 }
 
 type PulsarSpec struct {
