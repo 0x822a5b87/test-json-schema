@@ -15,9 +15,8 @@ func main() {
 		log.Fatalf("error: %v", err)
 		return
 	}
-	log.Printf("%s\n", string(file))
 	flinkJob := valid.FlinkJob{}
-	err = yaml.Unmarshal([]byte(string(file)), &flinkJob)
+	err = yaml.Unmarshal(file, &flinkJob)
 	if err != nil {
 		log.Fatalf("error: %v", err)
 		return

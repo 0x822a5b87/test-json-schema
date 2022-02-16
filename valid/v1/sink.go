@@ -1,5 +1,12 @@
 package v1
 
+type RedisKeyPatternEnum string
+
+const (
+	Regex  RedisKeyPatternEnum = "regex"
+	Prefix RedisKeyPatternEnum = "prefix"
+)
+
 type Sink struct {
 	Type  SinkTypeEnum `yaml:"type" validate:"required"`
 	Redis RedisSink    `yaml:"redis"`
@@ -17,5 +24,14 @@ type RedisSink struct {
 }
 
 type KeyPattern struct {
+	Type RedisKeyPatternEnum `yaml:"type" validate:"required"`
+
 	Prefixes []string `yaml:"prefixes"`
+	Regex    []string `yaml:"regexes"`
+}
+
+func NewKeyPattern() KeyPattern {
+	return KeyPattern{
+		Type: Prefix,
+	}
 }

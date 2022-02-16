@@ -29,25 +29,32 @@ spec:
       kafka:
         id: 203
         topic: ieg_smoba_playerlogin
+        zookeeper: 127.0.0.1:2181
+        broker: 127.0.0.1:9092
     - type: kafka
       kafka:
         id: 204
         topic: ieg_smoba_playerlogin
+        zookeeper: 127.0.0.1:2181
+        broker: 127.0.0.1:9092
     - type: kafka
       kafka:
         id: 205
         topic: ieg_smoba_playerlogin
+        zookeeper: 127.0.0.1:2181
+        broker: 127.0.0.1:9092
   sink:
     type: redis
     redis:
-      host: "tencent-redis"
+      host: tencent-redis
       port: 6379
-      db: "smoba"
-      auth: "xxx"
+      db: smoba
+      auth: xxx
       pattern:
+        type: prefix
         prefixs:
-          - "hello"
-          - "world"
+          - hello
+          - world
   monitor:
     - type: tglog
       host: tglog.sh
